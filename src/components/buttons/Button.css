@@ -1,0 +1,22 @@
+.btn {
+	border: none;
+	outline: 1px dotted #252525;
+	outline-offset: -4px;
+	background: #bfbfbf;
+	box-shadow: inset -1px -1px #292929, inset 1px 1px #fff,
+		inset -2px -2px rgb(158, 158, 158), inset 2px 2px #ffffff;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	cursor: pointer;
+
+	/* width: 140px; */
+	padding: 10px;
+	color: inherit;
+
+	&:active {
+		-webkit-box-shadow: inset -1px -1px #fff, inset 1px 1px #292929,
+			inset -2px -2px #ffffff, inset 2px 2px rgb(158, 158, 158);
+		box-shadow: inset -1px -1px #fff, inset 1px 1px #292929,
+			inset -2px -2px #ffffff, inset 2px 2px rgb(158, 158, 158);
+	}
+}

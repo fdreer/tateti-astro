@@ -1,0 +1,94 @@
+---
+import Footer from '@/components/Footer.astro'
+import { ViewTransitions } from 'astro:transitions'
+
+interface Props {
+	title: string
+}
+
+const { title } = Astro.props
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Juego de ta-te-ti en línea" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<ViewTransitions />
+	</head>
+	<body>
+		<slot name="header" />
+		<main>
+			<slot />
+		</main>
+		<Footer />
+		<style is:global>
+			:root {
+				font-family: 'PixelFont';
+				--color-primary: #222;
+				--color-secondary: #dfdfdf;
+
+				background-color: var(--color-secondary);
+				color: var(--color-primary);
+				margin: 0 auto;
+				max-width: 710px;
+			}
+			@font-face {
+				font-family: 'PixelFont';
+				src: url('/fonts/PixelFont.woff2') format('woff2');
+				font-weight: normal;
+				font-style: normal;
+				font-display: swap;
+			}
+			body {
+				text-align: center;
+				margin: 0;
+				padding: 0;
+				display: flex;
+				flex-direction: column;
+				min-height: 100dvh;
+			}
+			main {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				flex-grow: 1;
+			}
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+			}
+			html {
+				font-family: 'PixelFont', system-ui, sans-serif;
+				scroll-behavior: smooth;
+			}
+			a {
+				text-decoration: none;
+			}
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				text-wrap: balance;
+			}
+			p {
+				text-wrap: pretty;
+			}
+			ul {
+				padding: 0;
+				list-style: none;
+			}
+			h1 {
+				font-size: 4rem;
+				margin: 0;
+			}
+		</style>
+	</body>
+</html>
