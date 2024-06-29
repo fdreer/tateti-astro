@@ -2,9 +2,11 @@
 import Layout from '@/layouts/Layout.astro'
 import Header from '@/components/Header.astro'
 import Game from '@/components/game/Game'
+
+export const prerender = true
 ---
 
 <Layout title="TA-TE-TI OFFLINE">
 	<Header slot="header" />
-	<Game client:visible />
+	<Game client:load />
 </Layout>
