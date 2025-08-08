@@ -1,3 +1,5 @@
+import './Game.css'
+
 import {
 	Turn,
 	type Board as BoardType,

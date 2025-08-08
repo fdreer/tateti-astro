@@ -1,48 +1,12 @@
 ---
 import Layout from '@/layouts/Layout.astro'
+import Header from '@/components/Header.astro'
+import OnlineGame from '@/components/game/OnlineGame'
 ---
 
-<Layout title="TA-TE-TI ONLINE">
-	<h1>TA-TE-TI</h1>
-	<section>
-		<div class="offline-message">
-			<h2>🚧 Modo Online en Construcción</h2>
-			<p>Estamos configurando el modo multijugador.</p>
-			<p>Por ahora, disfruta del <a href="/offline">modo offline</a> 🎮</p>
-		</div>
-	</section>
+<Layout title="TA-TE-TI - Online">
+	<Header slot="header" />
+	<main>
+		<OnlineGame client:load />
+	</main>
 </Layout>
-
-<style>
-	section {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 20px;
-		padding-top: 15px;
-	}
-
-	.offline-message {
-		text-align: center;
-		padding: 20px;
-		border: 2px dashed #666;
-		border-radius: 8px;
-		background: #f9f9f9;
-		max-width: 400px;
-	}
-
-	.offline-message h2 {
-		margin-top: 0;
-		color: #e67e22;
-	}
-
-	.offline-message a {
-		color: #3498db;
-		text-decoration: underline;
-		font-weight: bold;
-	}
-
-	.offline-message a:hover {
-		color: #2980b9;
-	}
-</style>

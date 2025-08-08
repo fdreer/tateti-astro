@@ -1,22 +1,11 @@
 ---
 import Layout from '@/layouts/Layout.astro'
 import Button from '@/components/buttons/Button'
-
-export const prerender = true
 ---
 
 <Layout title="TA-TE-TI">
-	<h1>TA-TE-TI</h1>
-	<section>
-		<Button isAnchor href="/offline">offline</Button>
-		<Button isAnchor href="/online">online</Button>
-	</section>
+	<main>
+		<Button isAnchor href="/offline">Modo Offline</Button>
+		<Button isAnchor href="/online">Modo Online</Button>
+	</main>
 </Layout>
-
-<style>
-	section {
-		display: flex;
-		gap: 20px;
-		padding-top: 15px;
-	}
-</style>

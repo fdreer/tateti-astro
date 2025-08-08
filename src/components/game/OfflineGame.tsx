@@ -1,9 +1,7 @@
 import usePlay from '@/hooks/usePlay'
 import Board from '@/components/game/Board'
 
-import './Game.css'
-
-const Game = () => {
+const OfflineGame = () => {
 	const { board, play, turn, winner, resetBoard } = usePlay()
 
 	return (
@@ -17,4 +15,4 @@ const Game = () => {
 	)
 }
 
-export default Game
+export default OfflineGame
