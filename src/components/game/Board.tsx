@@ -19,16 +19,26 @@ interface Props {
 }
 
 const Board = ({ board, onPlay, resetBoard, turn, winner }: Props) => {
+	const isTie = board.every((square) => square !== null) && !winner
+
+	const getStatusMessage = () => {
+		if (winner) return `¡GANÓ "${winner}"!`
+		if (isTie) return '¡EMPATE!'
+		return `TURNO DE "${turn}"`
+	}
+
 	return (
 		<>
-			{!winner ? (
-				<h2 style={{ margin: 0 }}>TURNO DE {turn}</h2>
-			) : (
-				<h2 style={{ margin: 0 }}>GANÓ "{winner}"</h2>
-			)}
+			<h2 style={{ margin: 0, marginBottom: '10px' }}>{getStatusMessage()}</h2>
+
 			<section className="board">
 				{board.map((square, index) => (
-					<Square key={index} index={index} onPlay={onPlay}>
+					<Square
+						key={index}
+						index={index}
+						onPlay={onPlay}
+						disabled={!!square || !!winner || isTie}
+					>
 						{square === Turn.X ? (
 							<Close />
 						) : square === Turn.O ? (
@@ -37,6 +47,7 @@ const Board = ({ board, onPlay, resetBoard, turn, winner }: Props) => {
 					</Square>
 				))}
 			</section>
+
 			<Button onClick={resetBoard}>
 				<Reload />
 			</Button>

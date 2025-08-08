@@ -5,31 +5,44 @@ import Layout from '@/layouts/Layout.astro'
 <Layout title="TA-TE-TI ONLINE">
 	<h1>TA-TE-TI</h1>
 	<section>
-		<button id="create-room">CREAR SALA</button>
-		<button id="join-room">UNIRSE A SALA</button>
-		<!-- <h2>Fuera de servicio</h2> -->
+		<div class="offline-message">
+			<h2>🚧 Modo Online en Construcción</h2>
+			<p>Estamos configurando el modo multijugador.</p>
+			<p>Por ahora, disfruta del <a href="/offline">modo offline</a> 🎮</p>
+		</div>
 	</section>
 </Layout>
 
-<script>
-	const $buttonCreate = document.querySelector('#create-room')
-	const $joinRoom = document.querySelector('#join-room')
+<style>
+	section {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 20px;
+		padding-top: 15px;
+	}
 
-	$buttonCreate?.addEventListener('click', async () => {
-		const res = await fetch('/api/online', {
-			method: 'POST'
-		})
+	.offline-message {
+		text-align: center;
+		padding: 20px;
+		border: 2px dashed #666;
+		border-radius: 8px;
+		background: #f9f9f9;
+		max-width: 400px;
+	}
 
-		const json = await res.json()
-		console.log(json)
-	})
+	.offline-message h2 {
+		margin-top: 0;
+		color: #e67e22;
+	}
 
-	$joinRoom?.addEventListener('click', async () => {
-		const res = await fetch('/api/online/primera-sala', {
-			method: 'POST'
-		})
+	.offline-message a {
+		color: #3498db;
+		text-decoration: underline;
+		font-weight: bold;
+	}
 
-		const json = await res.json()
-		console.log(json)
-	})
-</script>
+	.offline-message a:hover {
+		color: #2980b9;
+	}
+</style>

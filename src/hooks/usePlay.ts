@@ -16,22 +16,31 @@ export const usePlay = () => {
 	const play = (index: number) => {
 		if (board[index] || winner) return
 
-		const newBoard: Board = [...board]
+		const newBoard: Board = [...board] as Board
 		newBoard[index] = turn
-		const newTurn = turn === Turn.X ? Turn.O : Turn.X
+
 		setBoard(newBoard)
-		setTurn(newTurn)
 
 		const isWinner = checkWinner(newBoard)
 		if (isWinner) {
 			setWinner(turn)
-			// confetti()
 			return
 		}
+
+		// Verificar empate
+		const isTie = newBoard.every((square) => square !== null)
+		if (isTie) {
+			setWinner(null) // O podrías crear un estado especial para empate
+			return
+		}
+
+		// Cambiar turno solo si no hay ganador ni empate
+		const newTurn = turn === Turn.X ? Turn.O : Turn.X
+		setTurn(newTurn)
 	}
 
 	const resetBoard = () => {
-		setBoard(INITIAL_BOARD)
+		setBoard([...INITIAL_BOARD] as Board)
 		setTurn(Turn.X)
 		setWinner(null)
 	}
